@@ -12,9 +12,6 @@ class FactorTable:
         self.columns = dataframe.columns
         self.observed_column = None
 
-    def retrieve_values(self):
-        return self.dataframe.values
-
     def locate_and_change_observed(self, observed_name, observed_value):
         print("\nBefore filtering observed:")
         print(self.dataframe)
