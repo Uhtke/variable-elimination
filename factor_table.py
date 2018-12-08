@@ -16,9 +16,9 @@ class FactorTable:
         return self.dataframe.values
 
     def locate_and_change_observed(self, observed_name, observed_value):
-        print(observed_name)
-        print("Before mutation")
+        print("\nBefore filtering observed:")
         print(self.dataframe)
         self.dataframe = self.dataframe[self.dataframe[observed_name] != observed_value]
-        print("After mutation")
+        print("\nAfter filtering observed:")
         print(self.dataframe)
+        print("\n")

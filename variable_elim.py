@@ -5,7 +5,7 @@ Class for the implementation of the variable elimination algorithm.
 
 """
 
-from factor_indetification import factor_identification
+from factor_identifier import FactorIdentifier
 from read_bayesnet import BayesNet
 
 
@@ -39,12 +39,15 @@ class VariableElimination():
         # CHANGE from original code:
         # Here is where my code begins
 
-        # Step 1 Call elim_order() and run it to get the specified elimination order
-        ordered_list = elim_order()
-        print("Nodes after sorting: ", ordered_list)
+        # Step 1: indentifying and reducing observables
+        print("\n\nSTEP 1 : Factor Identification\n\n")
+        identifier = FactorIdentifier(self.network.nodes, self.network.probabilities, observed)
+        identifier.factor_identification()
 
-        # Step 2: indentifying and reducing observables
-        factor_identification(self.network.nodes, self.network.probabilities, observed)
+        # Step 2 Call elim_order() and run it to get the specified elimination order
+        print("\n\nSTEP 2 : Elimination Order\n\n")
+        ordered_list = elim_order()
+        print("Nodes after sorting: ", ordered_list, "\n")
 
         # Step 3: Variable elimination!!
         # oh no, no time, k, bye
